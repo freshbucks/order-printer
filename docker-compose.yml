@@ -4,7 +4,7 @@ services:
     image: composer
     volumes:
       - ./src:/app
-    command: composer install
+    command: install --ignore-platform-reqs
   php-fpm:
     image: php:7.1-fpm
     volumes:
