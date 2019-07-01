@@ -15,4 +15,4 @@ services:
       - ./conf.d:/etc/nginx/conf.d
       - ./src:/app
     ports:
-      - 18080:80
+      - 3000:80
