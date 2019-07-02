@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="gi">
+    <meta charset="gb2312">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>友家铺子</title>
     <style>
@@ -29,7 +29,7 @@
 
                     <table>
                         <tr>
-                            <th>下单账号</th>
+                            <th>用户</th>
                             <th>【数量】商品名称</th>
                             <th>金额</th>
                         </tr>
@@ -41,7 +41,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    <p>售后电话：18018018011</p>
+                    <p>售后电话：18054407320</p>
                 </div>
             </div>
             <div class="half">
@@ -58,7 +58,7 @@
 
                     <table>
                         <tr>
-                            <th>下单账号</th>
+                            <th>用户</th>
                             <th>【数量】商品名称</th>
                             <th>金额</th>
                         </tr>
@@ -70,7 +70,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    <p>售后电话：18018018011</p>
+                    <p>售后电话：18054407320</p>
                 </div>
             </div>
         </div>
