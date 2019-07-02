@@ -41,7 +41,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    <p>售后电话：18054407320</p>
+                    <p>售后电话/微信：18054407320</p>
                 </div>
             </div>
             <div class="half">
@@ -70,7 +70,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    <p>售后电话：18054407320</p>
+                    <p>售后电话/微信：18054407320</p>
                 </div>
             </div>
         </div>
