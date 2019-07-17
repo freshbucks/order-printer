@@ -6,7 +6,7 @@ services:
       - ./src:/app
     command: install --ignore-platform-reqs
   php-fpm:
-    image: php:7.1-fpm
+    image: groupon/php:7.2-fpm
     volumes:
       - ./src:/app
   nginx:
