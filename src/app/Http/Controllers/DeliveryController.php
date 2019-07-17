@@ -15,13 +15,13 @@ use Illuminate\Http\Request;
 class DeliveryController extends Controller
 {
     public function index(Request $request) {
-        $list = ComshopDeliveryList::with(['goods', 'orders'])->get();
 
-        $date = Carbon::today();
+        $today = Carbon::today();
+        $list = ComshopDeliveryList::with(['goods', 'orders'])->where('create_time', '>', $today->timestamp)->get();
 
         return view('baicai', [
             'data' => $list,
-            'date' => $date
+            'today' => $today
         ]);
     }
 }

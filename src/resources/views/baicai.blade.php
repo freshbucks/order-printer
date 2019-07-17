@@ -24,7 +24,7 @@
         <div class="page">
             <div class="half">
                 <div class="container">
-                    <h1>白菜拼拼配送单 {{substr($date, 0, 10)}}</h1>
+                    <h1>白菜拼拼配送单 {{substr($today, 0, 10)}}</h1>
                     <div>
                         <p><b>团长信息：</b> <b>{{$item['head_name']}}</b> {{$item['head_mobile']}}</p>
                         <p><b>提货地址：</b>{{$item['head_address']}}</p>
