@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::post('/upload', 'UploadController@upload');
+
+Route::get('/delivery', 'DeliveryController@index');
