@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command('bc:sales:report')
-                  ->everyMinute();
+                  ->daily()->at('00:02');
     }
 
     /**
