@@ -14,7 +14,7 @@ class SendSalesReport extends Command
      *
      * @var string
      */
-    protected $signature = 'ding:sales:report';
+    protected $signature = 'bc:sales:report';
 
     /**
      * The console command description.
