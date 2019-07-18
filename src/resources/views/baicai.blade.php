@@ -36,14 +36,16 @@
                     <table>
                         <tr class="header">
                             <th width="8%">序</th>
-                            <th width="85%">商品</th>
-                            <th width="7%">数量</th>
+                            <th width="60%"><span class="right">数量</span>商品</th>
+                            <th width="25%"></th>
+                            <th width="7%">核对</th>
                         </tr>
                         @foreach($item->goods as $key => $good)
                             <tr>
                                 <td>{{$key + 1}}</td>
-                                <td>{{$good['goods_name']}}</td>
-                                <td class="center">{{$good['goods_count']}}</td>
+                                <td><span class="right">{{$good['goods_count']}}</span>{{$good['goods_name']}}</td>
+                                <td></td>
+                                <td class="center">□</td>
                             </tr>
                         @endforeach
                     </table>
