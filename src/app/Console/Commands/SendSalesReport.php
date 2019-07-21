@@ -48,36 +48,30 @@ SELECT
 FROM
 	ims_lionfish_comshop_order o
 WHERE
-	o.pay_time > ?
-AND o.pay_time < ?
-AND o.order_status_id = 1
+	o.date_added > ?
+AND o.date_added < ?
+AND o.order_status_id IN (1,2,4,6,11,14)
 ', [$yesterday->timestamp, $today->timestamp]);
 
         if ($count->size > 0) {
             $rows = DB::select('
 SELECT
-	g.id,
 	g.goodsname,
-	r.size,
-	r.total
+	SUM(og.quantity) size,
+	SUM(og.total) total
 FROM
-	ims_lionfish_comshop_goods g
-RIGHT JOIN (
-	SELECT
-		og.goods_id goods_id,
-		sum(og.total) total,
-		sum(og.quantity) size
-	FROM
-		ims_lionfish_comshop_order_goods og
-	RIGHT JOIN ims_lionfish_comshop_order o ON o.order_id = og.order_id
-	WHERE
-		o.pay_time > ?
-	AND o.pay_time < ?
-	AND o.order_status_id = 1
-	GROUP BY
-		og.goods_id
-) r ON g.id = r.goods_id
+	ims_lionfish_comshop_order_goods og
+LEFT JOIN ims_lionfish_comshop_goods g ON og.goods_id = g.id
+LEFT JOIN ims_lionfish_comshop_order o ON og.order_id = o.order_id
+WHERE
+	og.addtime > ?
+AND og.addtime < ?
+AND o.order_status_id IN (1,2,4,6,11,14)
+GROUP BY
+	og.goods_id
 ', [$yesterday->timestamp, $today->timestamp]);
+
+            dump($rows);
 
             $content = "# 销售报告" . $yesterday->toDateString() . "  \n";
             $total = round($count->total - $count->reduce, 2);
@@ -89,7 +83,7 @@ RIGHT JOIN (
 //                $total = round($row->total, 2);
 //                $content .= "销量: **$row->size** 销售额: **$total**  \n";
             }
-            $client->sendSalesReport($yesterday->toDateString(), $content);
+//            $client->sendSalesReport($yesterday->toDateString(), $content);
         }
     }
 }

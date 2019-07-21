@@ -45,4 +45,8 @@ class ComshopDeliveryList extends Model
     public function orders() {
         return $this->hasMany('App\Models\ComshopDeliveryListOrder', 'list_id', 'id');
     }
+
+    public function head() {
+        return $this->belongsTo('App\Models\CommunityHead', 'head_id', 'id');
+    }
 }
