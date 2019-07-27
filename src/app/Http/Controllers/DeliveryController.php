@@ -59,6 +59,8 @@ class DeliveryController extends Controller
         static $sorted = [];
         static $data = [];
 
+        return compact('sorted', 'data');
+
         $elements = collect($rows[$row]->elements);
 
         $filtered = $elements->filter(function($item, $key) use ($sorted, $row) {
