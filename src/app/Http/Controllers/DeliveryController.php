@@ -17,7 +17,7 @@ class DeliveryController extends Controller
 {
     public function index(Request $request) {
 
-        $today = Carbon::today();
+        $today = Carbon::today('PRC');
         $data = ComshopDeliveryList::with(['goods', 'orders', 'head'])->where('create_time', '>', $today->timestamp)->get();
 
         if (!$data->count()) {
