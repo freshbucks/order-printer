@@ -74,8 +74,8 @@ class DeliveryController extends Controller
             });
         }
 
-        $sorted[] = $next;
-        $data[] = $rows[$row]->elements[$next];
+        array_push($sorted, $next);
+        array_push($data, $rows[$row]->elements[$next]);
         return $this->sorted($rows, $next + 1, $sorted);
     }
 }
