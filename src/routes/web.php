@@ -20,3 +20,4 @@ Route::post('/upload', 'UploadController@upload');
 Route::get('/delivery', 'DeliveryController@index');
 //Route::get('/send/goods', 'SendController@goods');
 //Route::get('/send/leader', 'SendController@leader');
+Route::get('/goods', 'GoodsController@index');

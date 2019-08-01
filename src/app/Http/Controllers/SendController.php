@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Models\ComshopOrder;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 
 class SendController extends Controller
 {
@@ -76,18 +77,29 @@ class SendController extends Controller
     }
 
     public function goods() {
-        $orders = ComshopOrder::distinct('shipping_tel')->limit(200)->get('shipping_tel as tel');
-        $tels = $orders->pluck('tel')->reduce(function ($a, $b) {
-            if (!$a) {
-                return $b;
-            }
-            return $a . ',' . $b;
+//        $orders = ComshopOrder::distinct('shipping_tel')
+//            ->get(['shipping_tel as tel', 'ziti_mobile as mobile', 'ziti_name as name']);
+        $orders = DB::table('ims_lionfish_comshop_order as o')
+            ->distinct('o.shipping_tel')
+            ->select('o.shipping_tel as tel', 'm.username as name', 'o.ziti_mobile as mobile')
+            ->leftJoin('ims_lionfish_comshop_member as m', 'o.head_id', '=', 'm.member_id')
+            ->where('o.shipping_tel', '<>', 0)
+            ->whereNotIn('o.ziti_mobile', [13110445803, 13869660377, 15763649985, 15053668097, 18563066252, 18010375803])
+            ->orderBy('o.ziti_mobile')
+            ->get();
+//        dump($orders);
+
+        $grouped = $orders->groupBy('mobile');
+
+//        ob_end_clean();
+        $grouped->each(function ($item) {
+            $data = [':贝贝南瓜2个 约2.5斤', '14.98元', "8.98元~ 下单请联系微信: {$item[0]->name}"];
+            $tels = $item->implode('tel', ',');
+//            $this->send($tels, '459314', $data);
+            dump($item[0]->mobile, $data);
+//            flush();
+//            sleep(1);
         });
-
-        $datas = [':埃及鲜橙5个 约2斤', '12.5元', '6.9元~ 详情加微信: 13110445803'];
-
-        $response = $this->send($tels, '459314', $datas);
-        dump($response->getBody());
     }
 
     private function send($to, $templateId, $datas = []) {
