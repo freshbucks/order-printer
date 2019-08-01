@@ -17,7 +17,7 @@
         .page{clear: both; page-break-after: always;}
         /*tr:nth-child(2n){background: #f7f7f7}*/
     </style>
-    <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=VWQBZ-2G3KX-ZLM4G-TJ7XC-3JARF-RDB5Q&libraries=geometry"></script>
+    <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=VWQBZ-2G3KX-ZLM4G-TJ7XC-3JARF-RDB5Q"></script>
 </head>
 <body onload="init()">
 <div id="map" style="width: 960px; height: 600px; page-break-after: always;"></div>
