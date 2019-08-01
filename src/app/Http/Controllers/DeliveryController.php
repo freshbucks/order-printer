@@ -25,7 +25,7 @@ class DeliveryController extends Controller
         }
 
         $heads = $data->map(function($item) {
-            return $item->head->only(['lat', 'lon']);
+            return $item->head->only(['lat', 'lon', 'community_name']);
         });
 
 //        $http = new Curl();

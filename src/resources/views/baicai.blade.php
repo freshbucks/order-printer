@@ -44,12 +44,12 @@
                 content: address.community_name
             });
             path.push(position);
-            routes += ' - ' + (address.route.distance/1000).toFixed(1)
-                + 'km(' + (address.route.duration/60).toFixed(2) + 'min)'
-                + ' -> <b>' + address.community_name + '</b>';
+//            routes += ' - ' + (address.route.distance/1000).toFixed(1)
+//                + 'km(' + (address.route.duration/60).toFixed(2) + 'min)'
+//                + ' -> <b>' + address.community_name + '</b>';
         });
         new qq.maps.Polyline({map, path});
-        document.getElementById('routes').innerHTML = routes;
+//        document.getElementById('routes').innerHTML = routes;
     }
 </script>
 @foreach($data as $item)
